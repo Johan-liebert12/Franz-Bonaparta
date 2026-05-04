@@ -13,7 +13,7 @@ def download():
     url = request.form['url']
     
     ydl_opts = {
-    'format': 'bestvideo+bestaudio/best',
+    'format': 'best',
     'merge_output_format': 'mp4',
     'outtmpl': 'downloads/%(id)s.%(ext)s',
     'restrictfilenames': True
@@ -25,6 +25,8 @@ def download():
     for file in os.listdir():
         if file.startswith("video"):
             return send_file(file, as_attachment=True)
+            os.remove(file)
+return response
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
