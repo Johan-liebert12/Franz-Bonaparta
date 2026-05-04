@@ -15,8 +15,9 @@ def download():
     ydl_opts = {
     'format': 'bestvideo+bestaudio/best',
     'merge_output_format': 'mp4',
-    'outtmpl': 'video.%(ext)s'
-   }
+    'outtmpl': 'downloads/%(id)s.%(ext)s',
+    'restrictfilenames': True
+    }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
