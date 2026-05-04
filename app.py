@@ -25,8 +25,6 @@ def download():
     for file in os.listdir():
         if file.startswith("video"):
             return send_file(file, as_attachment=True)
-            os.remove(file)
-return response
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
